@@ -1,10 +1,43 @@
 #include <utmpx.h>
 #include <paths.h>
+#include <unistd.h>
 #include "ruby.h"
 
+#ifndef _PATH_UTMP
+#define _PATH_UTMP "/var/log/wtmp"
+#endif
+
+#ifndef _PATH_UTMP
+#define _PATH_UTMP "/var/run/utmp"
+#endif
+
+#ifndef _PATH_BTMP
+#define _PATH_BTMP "/var/log/btmp"
+#endif
+
+#ifndef R_OK
+#define R_OK 4
+#endif
+
+#ifndef F_OK
+#define F_OK 0
+#endif
+
 void read_log(VALUE ary, char *log_path) {
-	if(access(log_path, R_OK))
+	if(access(log_path, R_OK)) {
+		char message[256] ;
+
+		if(access(log_path, F_OK) == 0) {
+			sprintf(message, "Permission denied while reading %s", log_path) ;
+			rb_raise(rb_eRuntimeError, message, 0) ;
+		} else {
+			sprintf(message, "No such file or directory %s", log_path) ;
+			rb_raise(rb_eRuntimeError, message, 0) ;
+		}
+
 		return ;
+	}
+
 
 	struct utmpx data ;
 
@@ -59,9 +92,16 @@ VALUE utmp(VALUE obj) {
 	return ary ;
 }
 
+VALUE btmp(VALUE obj) {
+	VALUE ary = rb_ary_new() ;
+	read_log(ary, _PATH_BTMP) ;
+	return ary ;
+}
+
 void Init_login_records() {
 	VALUE _login_records = rb_define_module("LoginRecords") ;
 
 	rb_define_module_function(_login_records, "wtmp", wtmp, 0) ;
 	rb_define_module_function(_login_records, "utmp", utmp, 0) ;
+	rb_define_module_function(_login_records, "btmp", btmp, 0) ;
 }
