@@ -38,7 +38,6 @@ void read_log(VALUE ary, char *log_path) {
 		return ;
 	}
 
-
 	struct utmpx data ;
 
 	FILE *log = fopen(log_path, "rb") ;
