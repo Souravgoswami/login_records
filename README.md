@@ -41,7 +41,20 @@ $ gem install login_records
 ...
 {:type=>1, :pid=>0, :line=>"~", :id=>"~~", :user=>"shutdown", :host=>"5.9.9-xanmod1-1", :session=>0, :time=>2021-01-26 04:24:02.025406 +0530}
 {:type=>2, :pid=>0, :line=>"~", :id=>"~~", :user=>"reboot", :host=>"5.9.9-xanmod1-1", :session=>0, :time=>2021-01-26 11:15:30.529738 +0530}
+
+
+>> puts LoginRecords.btmp
+[{:type=>6, :pid=>49479, :line=>"pts/0", :id=>"0", :user=>"root", :host=>"", :session=>0, :time=>2021-01-27 02:25:10.312062 +0530}]
 ```
+
+Everything but the timezone is trusted. UTMP or WTMP files don't store timezone.
+The timezone returned by the time is local to the system and can be modified by setting the TZ environment variable.
+
+## Errors
+
+On error, RuntimeError is raised for the following problems:
+1. ReadError: Any of WTMP, UTMP, BTMP files can't be read when the method is called.
+2. No File: If the file doesn't exist.
 
 ## Contributing
 
