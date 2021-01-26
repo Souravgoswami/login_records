@@ -6,12 +6,12 @@ Gem::Specification.new do |s|
 	s.version = LoginRecords::VERSION
 	s.authors = ["Sourav Goswami"]
 	s.email = ["souravgoswami@protonmail.com"]
-	s.summary = "LoginRecords Allows you to read UTMP and WMTP files on Linux"
+	s.summary = "Using utmpx.h, LoginRecords Allows you to parse UTMP, WMTP and BTMP files on Linux"
 	s.description = s.summary
 	s.homepage = "https://github.com/Souravgoswami/login_records"
 	s.license= "MIT"
-	s.required_ruby_version = Gem::Requirement.new(">= 2.1")
-	s.files = Dir.glob(%w(lib/**/*rb ext/**/*{rb,c} LICENCE))
+	s.required_ruby_version = Gem::Requirement.new(">= 1.9")
+	s.files = Dir.glob(%w(lib/**/*.rb ext/**/*.{rb,c} LICENCE))
 	s.require_paths = ["lib"]
 	s.extensions = Dir.glob(%w(ext/**/extconf.rb))
 end
