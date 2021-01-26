@@ -7,7 +7,7 @@ unless have_const('linux') || RbConfig::CONFIG['arch'].to_s[/linux/]
 end
 
 unless have_header('utmpx.h') && have_header('ruby.h')
-	abort("Your system doesn't have utmpx.h. Sorry but you can't use LinuxStat::LoginRecords")
+	abort("Your system doesn't have utmpx.h.")
 end
 
 create_makefile 'login_records/login_records'
