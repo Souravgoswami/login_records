@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
 	s.description = s.summary
 	s.homepage = "https://github.com/Souravgoswami/login_records"
 	s.license= "MIT"
-	s.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
+	s.required_ruby_version = Gem::Requirement.new(">= 2.1")
 	s.files = Dir.glob(%w(lib/**/*rb ext/**/*{rb,c}))
 	s.require_paths = ["lib"]
 	s.extensions = Dir.glob(%w(ext/**/extconf.rb))
