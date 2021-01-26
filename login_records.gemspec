@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 	s.version = LoginRecords::VERSION
 	s.authors = ["Sourav Goswami"]
 	s.email = ["souravgoswami@protonmail.com"]
-	s.summary = "LoginRecords Allows you to read Login Records, well utmp and wmtp files"
+	s.summary = "LoginRecords Allows you to read UTML and WMTP files on Linux"
 	s.description = s.summary
 	s.homepage = "https://github.com/Souravgoswami/login_records"
 	s.license= "MIT"
