@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 require_relative "lib/login_records/version"
 
 Gem::Specification.new do |s|
@@ -12,7 +11,7 @@ Gem::Specification.new do |s|
 	s.homepage = "https://github.com/Souravgoswami/login_records"
 	s.license= "MIT"
 	s.required_ruby_version = Gem::Requirement.new(">= 2.1")
-	s.files = Dir.glob(%w(lib/**/*rb ext/**/*{rb,c}))
+	s.files = Dir.glob(%w(lib/**/*rb ext/**/*{rb,c} LICENCE))
 	s.require_paths = ["lib"]
 	s.extensions = Dir.glob(%w(ext/**/extconf.rb))
 end
