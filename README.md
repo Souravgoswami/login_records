@@ -1,0 +1,52 @@
+# LoginRecords
+LoginRecords Allows you to read Login Records, well utmp and wmtp files.
+The return type is an Array of Hashes.
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'login_records'
+```
+
+And then execute:
+
+```
+$ bundle install
+```
+
+Or install it yourself as:
+
+```
+$ gem install login_records
+```
+
+## Usage
+
+```
+>> require 'login_records'
+=> true
+
+>> puts LoginRecords.utmp
+{:type=>2, :pid=>0, :line=>"~", :id=>"~~", :user=>"reboot", :host=>"5.9.9-xanmod1-1", :session=>0, :time=>2021-01-26 11:15:30.529738 +0530}
+=> nil
+
+>> puts LoginRecords.wtmp
+{:type=>1, :pid=>0, :line=>"~", :id=>"~~", :user=>"shutdown", :host=>"5.5.10-arch1-1", :session=>0, :time=>2020-03-26 01:30:18.450387 +0530}
+{:type=>2, :pid=>0, :line=>"~", :id=>"~~", :user=>"reboot", :host=>"5.5.12-arch1-1", :session=>0, :time=>2020-03-26 01:40:35.355035 +0530}
+{:type=>1, :pid=>0, :line=>"~", :id=>"~~", :user=>"shutdown", :host=>"5.5.12-arch1-1", :session=>0, :time=>2020-03-26 04:49:31.611724 +0530}
+{:type=>2, :pid=>0, :line=>"~", :id=>"~~", :user=>"reboot", :host=>"5.5.13-arch1-1", :session=>0, :time=>2020-03-26 04:49:59.406445 +0530}
+...
+...
+{:type=>1, :pid=>0, :line=>"~", :id=>"~~", :user=>"shutdown", :host=>"5.9.9-xanmod1-1", :session=>0, :time=>2021-01-26 04:24:02.025406 +0530}
+{:type=>2, :pid=>0, :line=>"~", :id=>"~~", :user=>"reboot", :host=>"5.9.9-xanmod1-1", :session=>0, :time=>2021-01-26 11:15:30.529738 +0530}
+```
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/Souravgoswami/login_records.
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
