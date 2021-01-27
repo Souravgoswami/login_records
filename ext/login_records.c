@@ -97,10 +97,21 @@ VALUE btmp(VALUE obj) {
 	return ary ;
 }
 
+VALUE parse(VALUE obj, VALUE file) {
+	VALUE ary = rb_ary_new() ;
+	char *c_f = StringValuePtr(file) ;
+	read_log(ary, c_f) ;
+	return ary ;
+}
+
 void Init_login_records() {
 	VALUE _login_records = rb_define_module("LoginRecords") ;
+	rb_define_const(_login_records, "PATH_WTMP", rb_str_new_cstr(_PATH_WTMP)) ;
+	rb_define_const(_login_records, "PATH_UTMP", rb_str_new_cstr(_PATH_UTMP)) ;
+	rb_define_const(_login_records, "PATH_BTMP", rb_str_new_cstr(_PATH_BTMP)) ;
 
 	rb_define_module_function(_login_records, "wtmp", wtmp, 0) ;
 	rb_define_module_function(_login_records, "utmp", utmp, 0) ;
 	rb_define_module_function(_login_records, "btmp", btmp, 0) ;
+	rb_define_module_function(_login_records, "parse", parse, 1) ;
 }
