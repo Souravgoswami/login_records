@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 require_relative "lib/login_records/version"
 
 Gem::Specification.new do |s|
