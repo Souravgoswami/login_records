@@ -57,6 +57,18 @@ You can parse utmp files easily:
 Everything but the timezone is trusted. UTMP or WTMP files don't store timezone.
 The timezone returned by the time is local to the system and can be modified by setting the TZ environment variable.
 
+## Constants
+
+There are 3 constants:
+1. LoginRecords::PATH_UTMP
+2. LoginRecords::PATH_WTMP
+3. LoginRecords::PATH_BTMP
+
+These can be used to get the path. Even if you reassign them, they will just reassign on the Ruby level.
+The code will not read the reassigned file in other words. It will continue using the older ones.
+
+If you want to read a custom file instead, just use `LoginRecords.parse()` method.
+
 ## Errors
 
 On error, RuntimeError is raised for the following problems:
@@ -69,4 +81,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Sourav
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available as open-source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
