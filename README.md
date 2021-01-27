@@ -47,6 +47,13 @@ $ gem install login_records
 [{:type=>6, :pid=>49479, :line=>"pts/0", :id=>"0", :user=>"root", :host=>"", :session=>0, :time=>2021-01-27 02:25:10.312062 +0530}]
 ```
 
+Parsing files:
+You can parse utmp files easily:
+
+```
+>> LoginRecords.parse('path/to/file')
+```
+
 Everything but the timezone is trusted. UTMP or WTMP files don't store timezone.
 The timezone returned by the time is local to the system and can be modified by setting the TZ environment variable.
 
